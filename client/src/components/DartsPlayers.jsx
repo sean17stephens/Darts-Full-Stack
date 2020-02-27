@@ -3,7 +3,7 @@ import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import {Link}             from '@reach/router';
 import * as Config        from '../config.json'
 
-class Cakes extends React.Component {
+class DartsPlayers extends React.Component {
 
   // #######################################################
   // # Local state
@@ -34,7 +34,7 @@ class Cakes extends React.Component {
         <div>
           <h1>All Darts Players in the database</h1>
           <ul>
-            {this.state.cakes.map(cake => (
+            {this.state.dartsplayers.map(dartsplayer => (
               <li key={`dartsplayer_${dartsplayer._id}`}><Link to={`/dartsplayer/${dartsplayer._id}`}>{dartsplayer.title}</Link></li>
             ))}
           </ul>
@@ -45,7 +45,7 @@ class Cakes extends React.Component {
   }
 
   componentDidMount() {
-    fetch(urlToCurrentDomain(Config.dartsplayersAPI))
+    fetch(urlToCurrentDomain(Config.dartsplayerAPI))
       .then (res  => res.json())
       .then (json => {
         this.setState({dartsplayers       : json});

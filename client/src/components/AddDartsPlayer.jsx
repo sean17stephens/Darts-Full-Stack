@@ -3,7 +3,7 @@ import {navigate, Link}   from '@reach/router';
 import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import * as Config        from '../config.json'
 
-class AddCake extends React.Component {
+class AddDartsPlayer extends React.Component {
 
   // #######################################################
   // # Local state
@@ -51,7 +51,7 @@ class AddCake extends React.Component {
             </div> */}
 
             <div>
-              <input type='submit' value='Add Cake' />
+              <input type='submit' value='Add Darts Player' />
             </div>
 
           </form>
@@ -75,7 +75,7 @@ class AddCake extends React.Component {
     e.preventDefault();
 
     // Perform a POST call for the new data
-    fetch(urlToCurrentDomain(`${Config.cakesAPI}`), {
+    fetch(urlToCurrentDomain(`${Config.dartsplayerAPI}`), {
       method : 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ class AddCake extends React.Component {
         }
         return res.json();
       })
-      .then (json => navigate(`/cake/${json._id}`))
+      .then (json => navigate(`/dartsplayer/${json._id}`))
       .catch(err => {
         this.setState({reportedError: err.message || 'Unknown'});
       })
@@ -109,4 +109,4 @@ class AddCake extends React.Component {
 
 }
 
-export default AddCake;
+export default AddDartsPlayer;

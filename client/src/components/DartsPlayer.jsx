@@ -3,7 +3,7 @@ import {Link}             from '@reach/router';
 import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import * as Config        from '../config.json'
 
-class Cake extends React.Component {
+class DartsPlayer extends React.Component {
 
   // #######################################################
   // # Local state

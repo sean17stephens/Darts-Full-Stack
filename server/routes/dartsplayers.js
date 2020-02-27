@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     return mongoose
       .model('Darts Player')
       .find({})
-      .then (dartsplayers => res.json(dartsplayers))
+      .then (dart => res.json(dart))
       .catch(err => res
         .status(500)
         .json({ok: false})
@@ -29,7 +29,7 @@ router.get('/:id([0-9a-fA-F]{24})', (req, res) => {
   return mongoose
     .model('Darts Player')
     .findOne({_id: req.params.id})
-    .then (dartsplayer => res.json(dartsplayer))
+    .then (darts => res.json(darts))
     .catch(err => res
       .status(500)
       .json({ok: false})
@@ -42,8 +42,8 @@ router.post('/', (req, res) => {
     title     : req.body.title,
   })
   .save()
-  .then (dartsplayer => DartsPlayer.populate(dartsplayer, {path: '_id'}))
-  .then (dartsplayer => res.json(dartsplayer))
+  .then (darts => DartsPlayer.populate(darts, {path: '_id'}))
+  .then (darts => res.json(darts))
   .catch(err => res
     .status(400)
     .json({ok: false, error: err.message})
@@ -71,8 +71,8 @@ router.put('/:id([0-9a-fA-F]{24})', (req, res) => {
       }},
       {new: true}
     )
-    .then (dartsplayer => DartsPlayer.populate(dartsplayer, {path: '_id'}))
-    .then (dartsplayer => res.json(dartsplayer))
+    .then (darts => DartsPlayer.populate(darts, {path: '_id'}))
+    .then (darts => res.json(darts))
     .catch(err => res
       .status(500)
       .json({ok: false})

@@ -17,15 +17,15 @@ class DartsPlayers extends React.Component {
 
   render() {
 
-    if (!this.state.dartsplayers && this.state.dartsplayersLoaded === true) {
+    if (!this.state.dart && this.state.dartLoaded === true) {
       return (
         <p>Error loading Darts Players. Try again later.</p>
       );
-    } else if (!this.state.dartsplayers) {
+    } else if (!this.state.dart) {
       return (
-        <p>Loading Darts Players...</p>
+        <p>Loading Darts s...</p>
       );
-    } else if (this.state.dartsplayers.length === 0) {
+    } else if (this.state.dart.length === 0) {
       return (
         <p>Sorry, no Darts Players are available</p>
       );
@@ -34,25 +34,25 @@ class DartsPlayers extends React.Component {
         <div>
           <h1>All Darts Players in the database</h1>
           <ul>
-            {this.state.dartsplayers.map(dartsplayer => (
-              <li key={`dartsplayer_${dartsplayer._id}`}><Link to={`/dartsplayer/${dartsplayer._id}`}>{dartsplayer.title}</Link></li>
+            {this.state.dart.map(darts => (
+              <li key={`darts_${darts._id}`}><Link to={`/darts/${darts._id}`}>{darts.title}</Link></li>
             ))}
           </ul>
-          <p><Link to='/add-dartsplayer'>Add a new Darts Player</Link></p>
+          <p><Link to='/add-darts'>Add a new Darts Player</Link></p>
         </div>
       )
     }
   }
 
   componentDidMount() {
-    fetch(urlToCurrentDomain(Config.dartsplayerAPI))
+    fetch(urlToCurrentDomain(Config.dartAPI))
       .then (res  => res.json())
       .then (json => {
-        this.setState({dartsplayers       : json});
-        this.setState({dartsplayersLoaded : true});
+        this.setState({dart       : json});
+        this.setState({dartLoaded : true});
       })
       .catch(err => {
-        this.setState({dartsplayersLoaded: true});
+        this.setState({dartLoaded: true});
       });
   }
 

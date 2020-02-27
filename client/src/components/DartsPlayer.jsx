@@ -17,22 +17,22 @@ class DartsPlayer extends React.Component {
 
   render() {
 
-    if (!this.state.dartsplayer && this.state.dartsplayerLoaded === true) {
+    if (!this.state.darts && this.state.dartsLoaded === true) {
       return (
         <p>Error loading Darts Players. Try again later.</p>
       );
-    } else if (!this.state.dartsplayer) {
+    } else if (!this.state.darts) {
       return (
         <p>Loading Darts Players...</p>
       );
-    } else if (this.state.dartsplayer.length === 0) {
+    } else if (this.state.darts.length === 0) {
       return (
         <p>Sorry, no Darts Players are available</p>
       );
     } else {
       return (
         <div>
-          <h1>{this.state.dartsplayer.title}</h1>
+          <h1>{this.state.darts.title}</h1>
           <Link to='/'>Back to All Darts Players</Link>
         </div>
       )
@@ -40,14 +40,14 @@ class DartsPlayer extends React.Component {
   }
 
   componentDidMount() {
-    fetch(urlToCurrentDomain(`${Config.dartsplayerAPI}/${this.props.dartsplayerID}`))
+    fetch(urlToCurrentDomain(`${Config.dartAPI}/${this.props.dartsID}`))
       .then (res  => res.json())
       .then (json => {
-        this.setState({dartsplayer       : json});
-        this.setState({dartsplayerLoaded : true});
+        this.setState({darts       : json});
+        this.setState({dartsLoaded : true});
       })
       .catch(err => {
-        this.setState({dartsplayerLoaded: true});
+        this.setState({dartsLoaded: true});
       });
   }
 

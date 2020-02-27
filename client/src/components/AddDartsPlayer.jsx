@@ -75,7 +75,7 @@ class AddDartsPlayer extends React.Component {
     e.preventDefault();
 
     // Perform a POST call for the new data
-    fetch(urlToCurrentDomain(`${Config.dartsplayerAPI}`), {
+    fetch(urlToCurrentDomain(`${Config.dartAPI}`), {
       method : 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ class AddDartsPlayer extends React.Component {
         }
         return res.json();
       })
-      .then (json => navigate(`/dartsplayer/${json._id}`))
+      .then (json => navigate(`/dart/${json._id}`))
       .catch(err => {
         this.setState({reportedError: err.message || 'Unknown'});
       })

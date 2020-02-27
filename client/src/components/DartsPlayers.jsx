@@ -23,7 +23,7 @@ class DartsPlayers extends React.Component {
       );
     } else if (!this.state.dart) {
       return (
-        <p>Loading Darts s...</p>
+        <p>Loading Darts Players...</p>
       );
     } else if (this.state.dart.length === 0) {
       return (

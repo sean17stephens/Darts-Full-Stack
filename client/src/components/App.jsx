@@ -1,7 +1,7 @@
 import React    from 'react';
 import {Router} from "@reach/router";
-import DartsPlayers   from './DartsPlayers';
-import DartsPlayer    from './DartsPlayer';
+import DartsPlayers   from './Darts';
+import DartsPlayer    from './Dart';
 import AddDartsPlayer from './AddDartsPlayer';
 
 class App extends React.Component {

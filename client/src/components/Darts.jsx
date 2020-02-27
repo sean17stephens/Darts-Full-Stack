@@ -3,7 +3,7 @@ import {Link}             from '@reach/router';
 import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import * as Config        from '../config.json'
 
-class DartsPlayer extends React.Component {
+class Darts extends React.Component {
 
   // #######################################################
   // # Local state
@@ -53,4 +53,4 @@ class DartsPlayer extends React.Component {
 
 }
 
-export default DartsPlayer;
+export default Darts;

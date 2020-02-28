@@ -3,7 +3,7 @@ import {navigate, Link}   from '@reach/router';
 import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import * as Config        from '../config.json'
 
-class AddDartsPlayer extends React.Component {
+class AddDart extends React.Component {
 
   // #######################################################
   // # Local state
@@ -23,22 +23,22 @@ class AddDartsPlayer extends React.Component {
       return (
         <div>
           <h1>Error</h1>
-          <p>Sorry, there was an error creating a new Darts Player. The error was: {this.state.reportedError || 'Unknown'}</p>
+          <p>Sorry, there was an error creating the darts player. The error was: {this.state.reportedError || 'Unknown'}</p>
           <a href='#' onClick={this.resetForRetry.bind(this)}>Try again</a>&nbsp;|&nbsp;
-          <Link to='/'>Back to All Players</Link>
+          <Link to='/'>Back to All players</Link>
         </div>
       );
     } else if (this.state.processingAdd) {
       return (
-        <div>Adding Darts Player...</div>
+        <div>Adding player...</div>
       );
     } else {
       return (
         <div>
-          <h1>Add a Darts Player</h1>
+          <h1>Add a player</h1>
           <form onSubmit={this.handleSubmit.bind(this)}>
 
-            <div>
+          <div>
               <label>Player Name:
                 <input type='' value={this.state.title} onChange={this.handleTitleUpdate.bind(this)} />
               </label>
@@ -57,11 +57,11 @@ class AddDartsPlayer extends React.Component {
             </div>
 
             <div>
-              <input type='submit' value='Add Darts Player' />
+              <input type='submit' value='Add Player' />
             </div>
 
           </form>
-          <Link to='/'>Back to All Darts Playes</Link>
+          <Link to='/'>Back to All players</Link>
         </div>
       );
     }
@@ -102,7 +102,7 @@ class AddDartsPlayer extends React.Component {
         }
         return res.json();
       })
-      .then (json => navigate(`/darts/${json._id}`))
+      .then (json => navigate(`/dart/${json._id}`))
       .catch(err => {
         this.setState({reportedError: err.message || 'Unknown'});
       })
@@ -119,4 +119,4 @@ class AddDartsPlayer extends React.Component {
 
 }
 
-export default AddDartsPlayer;
+export default AddDart;

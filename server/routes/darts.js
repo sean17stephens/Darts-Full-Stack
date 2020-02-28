@@ -1,7 +1,7 @@
 const express  = require('express');
 const router   = express.Router();
 const mongoose = require('mongoose'); // using to generate ObjectIDs
-const Darts   = require('../models/Darts').Darts;
+const Dart   = require('../models/Dart').Dart;
 
 /**
  * Functionality for this route:
@@ -15,9 +15,9 @@ const Darts   = require('../models/Darts').Darts;
 // GET an array of all Darts Players change
 router.get('/', (req, res) => {
     return mongoose
-      .model('Darts')
+      .model('Dart')
       .find({})
-      .then (Darts => res.json(Darts))
+      .then (darts => res.json(darts))
       .catch(err => res
         .status(500)
         .json({ok: false})
@@ -27,9 +27,9 @@ router.get('/', (req, res) => {
   // GET a single darts player by ID
 router.get('/:id([0-9a-fA-F]{24})', (req, res) => {
   return mongoose
-    .model('Darts')
+    .model('Dart')
     .findOne({_id: req.params.id})
-    .then (Darts => res.json(Darts))
+    .then (dart => res.json(dart))
     .catch(err => res
       .status(500)
       .json({ok: false})
@@ -38,14 +38,14 @@ router.get('/:id([0-9a-fA-F]{24})', (req, res) => {
 
 // POST Create a new darts player
 router.post('/', (req, res) => {
-  return new Darts({
+  return new Dart({
     title  : req.body.title,
     ranking  : req.body.ranking,
     country  : req.body.country,
   })
   .save()
-  .then (Darts => Darts.populate(Darts, {path: '_id'}))
-  .then (Darts => res.json(Darts))
+  .then (dart => Dart.populate(dart, {path: '_id'}))
+  .then (dart => res.json(dart))
   .catch(err => res
     .status(400)
     .json({ok: false, error: err.message})
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
 
 // DELETE Delete a topic with a given ID
 router.delete('/:id([0-9a-fA-F]{24})', (req, res) => {
-  return Darts
+  return Dart
     .deleteOne({_id: req.params.id})
     .then (() => res.json({'ok': true}))
     .catch(err => res
@@ -65,7 +65,7 @@ router.delete('/:id([0-9a-fA-F]{24})', (req, res) => {
 
 // PUT Update a darts player
 router.put('/:id([0-9a-fA-F]{24})', (req, res) => {
-  return Darts
+  return Dart
     .findOneAndUpdate(
       {_id: req.params.id},
       {$set: {
@@ -75,8 +75,8 @@ router.put('/:id([0-9a-fA-F]{24})', (req, res) => {
       }},
       {new: true}
     )
-    .then (Darts => Darts.populate(Darts, {path: '_id'}))
-    .then (Darts => res.json(Darts))
+    .then (dart => Dart.populate(dart, {path: '_id'}))
+    .then (dart => res.json(dart))
     .catch(err => res
       .status(500)
       .json({ok: false})

@@ -1,7 +1,8 @@
 import React              from 'react';
-import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import {Link}             from '@reach/router';
+import urlToCurrentDomain from '../lib/urlToCurrentDomain';
 import * as Config        from '../config.json'
+import '../components/sass/Main.scss'
 
 class Dart extends React.Component {
 
@@ -19,33 +20,30 @@ class Dart extends React.Component {
 
     if (!this.state.dart && this.state.dartLoaded === true) {
       return (
-        <p>Error loading Darts Players. Try again later.</p>
+        <p>Error loading darts. Try again later.</p>
       );
     } else if (!this.state.dart) {
       return (
-        <p>Loading Darts Players...</p>
+        <p>Loading darts...</p>
       );
     } else if (this.state.dart.length === 0) {
       return (
-        <p>Sorry, no Darts Players are available</p>
+        <p>Sorry, no darts are available</p>
       );
     } else {
       return (
         <div>
-          <h1>All Darts Players in the database</h1>
-          <ul>
-            {this.state.dart.map(darts => (
-              <li key={`darts_${darts._id}`}><Link to={`/darts/${darts._id}`}>{darts.title}</Link></li>
-            ))}
-          </ul>
-          <p><Link to='/add-darts'>Add a new Darts Player</Link></p>
+          <h1>{this.state.dart.title}</h1>
+          <h1>{this.state.dart.ranking}</h1>
+          <h1>{this.state.dart.country}</h1>
+          <Link to='/'>Back to All darts</Link>
         </div>
       )
     }
   }
 
   componentDidMount() {
-    fetch(urlToCurrentDomain(Config.dartAPI))
+    fetch(urlToCurrentDomain(`${Config.dartsAPI}/${this.props.dartID}`))
       .then (res  => res.json())
       .then (json => {
         this.setState({dart       : json});

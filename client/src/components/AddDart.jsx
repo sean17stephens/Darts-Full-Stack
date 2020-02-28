@@ -10,7 +10,9 @@ class AddDart extends React.Component {
   // #######################################################
 
   state = {
-    title     : ''
+    title     : '',
+    ranking     : '',
+    country     : ''
   }
 
   // #######################################################
@@ -57,7 +59,7 @@ class AddDart extends React.Component {
             </div>
 
             <div>
-              <input type='submit' value='Add Player' />
+              <input type='submit' value='Add Dart' />
             </div>
 
           </form>
@@ -85,7 +87,7 @@ class AddDart extends React.Component {
     e.preventDefault();
 
     // Perform a POST call for the new data
-    fetch(urlToCurrentDomain(`${Config.dartAPI}`), {
+    fetch(urlToCurrentDomain(`${Config.dartsAPI}`), {
       method : 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -114,7 +116,7 @@ class AddDart extends React.Component {
   }
 
   componentDidMount() {
-    // this.getComments(this.props.cakeID);
+    // this.getComments(this.props.dartID);
   }
 
 }

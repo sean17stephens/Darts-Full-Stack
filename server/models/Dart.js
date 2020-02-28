@@ -2,7 +2,7 @@ const mongoose  = require('mongoose');
 const validator = require('validator');
 
 const SchemeConfig = {timestamps: true, skipVersioning: true};
-const DartsPlayerSchema  = new mongoose.Schema({
+const DartSchema  = new mongoose.Schema({
 
     title: {
       type      : String,
@@ -12,4 +12,4 @@ const DartsPlayerSchema  = new mongoose.Schema({
 
   }, SchemeConfig);
 
-  module.exports.Dart = mongoose.model('Darts', DartsPlayerSchema);
+  module.exports.Dart = mongoose.model('Dart', DartSchema);

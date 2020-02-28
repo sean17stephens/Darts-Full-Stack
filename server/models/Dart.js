@@ -8,7 +8,19 @@ const DartSchema  = new mongoose.Schema({
       type      : String,
       required  : true,
       validator : value => !validator.isEmpty(value)
-    }
+    },
+
+    ranking: {
+      type      : int,
+      required  : true,
+      validator : value => !validator.isEmpty(value)
+    },
+
+    country: {
+      type      : String,
+      required  : true,
+      validator : value => !validator.isEmpty(value)
+    },
 
   }, SchemeConfig);
 

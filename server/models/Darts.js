@@ -12,4 +12,4 @@ const DartsPlayerSchema  = new mongoose.Schema({
 
   }, SchemeConfig);
 
-  module.exports.Dart = mongoose.model('Dart', DartsPlayerSchema);
+  module.exports.Dart = mongoose.model('Darts', DartsPlayerSchema);

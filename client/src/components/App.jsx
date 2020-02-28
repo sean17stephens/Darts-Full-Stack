@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <Router>
         <DartsPlayers   path='/' />
-        <DartsPlayer    path='/darts/:dartsID' />
+        <DartsPlayer    path='/dart/:dartID' />
         <AddDartsPlayer path='/add-darts/' />
       </Router>
     );

@@ -44,11 +44,17 @@ class AddDartsPlayer extends React.Component {
               </label>
             </div>
 
-            {/* <div>
-              <label>cake Content:
-                <textarea value={this.state.content} onChange={this.handleContentUpdate.bind(this)}></textarea>
+            <div>
+              <label>World Ranking:
+                <input type='' value={this.state.ranking} onChange={this.handleRankingUpdate.bind(this)} />
               </label>
-            </div> */}
+            </div>
+
+            <div>
+              <label>Country:
+                <input type='' value={this.state.country} onChange={this.handleCountryUpdate.bind(this)} />
+              </label>
+            </div>
 
             <div>
               <input type='submit' value='Add Darts Player' />
@@ -92,7 +98,7 @@ class AddDartsPlayer extends React.Component {
         }
         return res.json();
       })
-      .then (json => navigate(`/dart/${json._id}`))
+      .then (json => navigate(`/darts/${json._id}`))
       .catch(err => {
         this.setState({reportedError: err.message || 'Unknown'});
       })
